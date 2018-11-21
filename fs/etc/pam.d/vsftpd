@@ -1,0 +1,3 @@
+auth required pam_mysql.so config_file=/etc/pam.d/vsftpd-config
+account required pam_mysql.so config_file=/etc/pam.d/vsftpd-config
+account optional pam_script.so dir=/etc/pam-scripts.d onerr=fail debug

@@ -1,0 +1,17 @@
+# See https://web.archive.org/web/20171122031610/http://pam-mysql.sourceforge.net/Documentation/package-readme.php for configuration.
+
+users.host = ${DB_HOST}
+users.db_user = ${DB_USERNAME}
+users.db_passwd = ${DB_PASSWORD}
+users.database = ${DB_NAME}
+users.table = ${TABLE_USERS}
+users.user_column = ${COL_USERNAME}
+users.password_column = ${COL_PASSWORD}
+users.password_crypt = ${PASSWORD_CRYPT}
+log.enabled = ${LOG_TRANSACTIONS}
+log.table = ${TABLE_LOGS}
+log.message_column = message
+log.user_column = username
+log.pid_column = pid
+log.host_column = host
+log.time_column = logged_at

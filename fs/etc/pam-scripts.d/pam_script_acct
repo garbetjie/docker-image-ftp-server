@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Ensure required variables exist.
+ [[ -z $PAM_USER ]] && exit 1
+
+# Make home directory.
+mkdir -p "/srv/virtual/${PAM_USER}"
+chown ftp:ftp "/srv/virtual/${PAM_USER}"
+chmod 0777 "/srv/virtual/${PAM_USER}"
