@@ -1,0 +1,24 @@
+---
+language: generic
+services:
+  - docker
+
+env:
+  global:
+#    - DOCKER_HUB_LOGIN
+#    - DOCKER_HUB_PASSWORD
+#    - DOCKER_HUB_REPO
+    - COMMIT="${TRAVIS_COMMIT:0:7}"
+
+before_install:
+  - docker pull ${DOCKER_HUB_REPO}/ftp-server:latest || true
+
+script:
+  - docker build --cache-from=${DOCKER_HUB_REPO}/ftp-server:latest -t ${DOCKER_HUB_REPO}/ftp-server:latest .
+  - docker tag ${DOCKER_HUB_REPO}/ftp-server:latest ${DOCKER_HUB_REPO}/ftp-server:${COMMIT}
+
+deploy:
+  - provider: script
+    script: "${TRAVIS_BUILD_DIR}/deploy.sh"
+    on:
+      branch: master
